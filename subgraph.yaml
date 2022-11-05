@@ -1,0 +1,29 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EZMarketplace
+    network: goerli
+    source:
+      address: "0x9967B15ad61a432ff73f71381F16B6695ad610e5"
+      abi: EZMarketplace
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - itemCancelled
+        - itemListed
+        - itemPurchased
+      abis:
+        - name: EZMarketplace
+          file: ./abis/EZMarketplace.json
+      eventHandlers:
+        - event: itemCancelled(indexed address,indexed address,indexed uint256)
+          handler: handleitemCancelled
+        - event: itemListed(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleitemListed
+        - event: itemPurchased(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleitemPurchased
+      file: ./src/ez-marketplace.ts
