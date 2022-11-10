@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: EZMarketplace
@@ -19,7 +19,7 @@ dataSources:
         - itemPurchased
       abis:
         - name: EZMarketplace
-          file: ./abis/EZMarketplace.json
+          file: EZMarketplace\abis\EZMarketplace.json
       eventHandlers:
         - event: itemCancelled(indexed address,indexed address,indexed uint256)
           handler: handleitemCancelled
@@ -27,7 +27,7 @@ dataSources:
           handler: handleitemListed
         - event: itemPurchased(indexed address,indexed address,indexed uint256,uint256)
           handler: handleitemPurchased
-      file: ./src/ez-marketplace.ts
+      file: EZMarketplace\EZMarketplace.wasm
   - kind: ethereum
     name: EZNft
     network: goerli
@@ -46,7 +46,7 @@ dataSources:
         - Transfer
       abis:
         - name: EZNft
-          file: ./abis/EZNft.json
+          file: EZNft\abis\EZNft.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
@@ -56,7 +56,7 @@ dataSources:
           handler: handleOwnershipTransferred
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/ez-nft.ts
+      file: EZNft\EZNft.wasm
   - kind: ethereum
     name: EZToken
     network: goerli
@@ -74,7 +74,7 @@ dataSources:
         - withdrew
       abis:
         - name: EZToken
-          file: ./abis/EZToken.json
+          file: EZToken\abis\EZToken.json
       eventHandlers:
         - event: EZTokenApproval(indexed address,indexed address,uint256)
           handler: handleEZTokenApproval
@@ -82,4 +82,4 @@ dataSources:
           handler: handleEZTokenTransfer
         - event: withdrew(indexed address,uint256)
           handler: handlewithdrew
-      file: ./src/ez-token.ts
+      file: EZToken\EZToken.wasm
