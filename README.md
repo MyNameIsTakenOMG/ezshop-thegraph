@@ -77,7 +77,7 @@ then go to `playground` of your subgraph and run the query:
 ## Challenge
 
 Since we have mutiple contracts to handle here, and one is `erc20` contract and another is `erc721`, and both of them have events named `Approval` and `Transfer` , hence `graph client` would solve this naming conflicts by adding a prefix `{contractName}` to event name, for example, an event name `Approval` will be changed to `MyTokenApproval` .  However, by doing that, theGraph would not be able to listen to the events it is supposed to, because there is no event named `MyTokenApproval` from the contract, which could lead to inconsistency of data store in the theGraph network.
-**Possible solution** : add extra events to the contract which has the events with the same names, but it could mean we have to emit our events in multiple places or functions.
+- **Possible solution** : add extra events to the contract which has the events with the same names, but it could mean we have to emit our events in multiple places or functions.
 
 
 
